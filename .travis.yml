@@ -14,3 +14,11 @@ after_success:
   - docker build -t hhai2002/multi-nginx ./nginx
   - docker build -t hhai2002/multi-server ./server
   - docker build -t hhai2002/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Push images to docker hub
+  - docker push hhai2002/multi-client
+  - docker push hhai2002/multi-nginx
+  - docker push hhai2002/multi-server
+  - docker push hhai2002/multi-worker
+  
